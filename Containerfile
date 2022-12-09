@@ -16,8 +16,12 @@ RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/re
 rpm-ostree install system76-scheduler && \
 systemctl enable com.system76.Scheduler.service
 
+# Install and enable adw-gtk3
+RUN wget https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-$(rpm -E %fedora)/nickavem-adw-gtk3-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_nickavem-adw-gtk3.repo && \
+rpm-ostree install adw-gtk3
+
 # Install extra packages and finalize
-RUN rpm-ostree install distrobox gnome-tweaks ffmpeg ffmpeg-libs gstreamer1-plugin-openh264 gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly totem  libva-utils NetworkManager-sstp && \
+RUN rpm-ostree install distrobox gnome-tweaks ffmpeg ffmpeg-libs gstreamer1-plugin-openh264 gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly totem libva-utils NetworkManager-sstp qemu libvirt virt-manager && \
 sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
 systemctl enable rpm-ostreed-automatic.timer && \
 rpm-ostree cleanup -m && \
