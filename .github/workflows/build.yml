@@ -1,10 +1,10 @@
-name: build-sb-tony-custom
+name: build-sb-custom-foundation
 on:
   push:
   schedule:
     - cron: '0 0 * * *'  # every day at midnight
 env:
-    IMAGE_NAME: sb-custom-tony
+    IMAGE_NAME: foundation
     IMAGE_TAGS: latest ${{ github.sha }}
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
     REGISTRY_USER: ${{ github.actor }}
