@@ -10,7 +10,7 @@ RUN rpm-ostree override remove mesa-va-drivers --install=mesa-va-drivers-freewor
 
 RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-$(rpm -E %fedora)/kylegospo-system76-scheduler-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo
 
-RUN rpm-ostree install distrobox gnome-tweaks ffmpeg ffmpeg-libs gstreamer1-plugin-openh264 gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly totem system76-scheduler VirtualBox akmod-VirtualBox libva-utils && \
+RUN rpm-ostree install distrobox gnome-tweaks ffmpeg ffmpeg-libs gstreamer1-plugin-openh264 gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly totem system76-scheduler libva-utils && \
 systemctl enable com.system76.Scheduler.service && \
 rpm-ostree cleanup -m && \
 ostree container commit
