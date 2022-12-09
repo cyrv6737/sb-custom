@@ -21,7 +21,7 @@ RUN wget https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-$
 rpm-ostree install adw-gtk3
 
 # Install extra packages and finalize
-RUN rpm-ostree install distrobox gnome-tweaks ffmpeg ffmpeg-libs gstreamer1-plugin-openh264 gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly totem libva-utils NetworkManager-sstp qemu libvirt virt-manager && \
+RUN rpm-ostree install distrobox gnome-tweaks ffmpeg ffmpeg-libs gstreamer1-plugin-openh264 gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly totem libva-utils NetworkManager-sstp && \
 sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
 systemctl enable rpm-ostreed-automatic.timer && \
 rpm-ostree cleanup -m && \
