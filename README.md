@@ -2,6 +2,8 @@
 
 Custom Fedora Silverblue OCI images for personal use.
 
+
+
 ## TODO
 
 - [ ] GNOME Extensions
@@ -12,3 +14,11 @@ Custom Fedora Silverblue OCI images for personal use.
 - [ ] GNOME Customization
 - [ ] Distrobox autoupdate user service
 - [ ] Flatpak autoupdate service
+
+## Images
+
+### Foundation
+
+```
+rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation:latest
+```
