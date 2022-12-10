@@ -1,6 +1,8 @@
 name: build-sb-custom-foundation
 on:
   push:
+    paths:
+      - 'images/foundation/**'
   schedule:
     - cron: '0 0 * * *'  # every day at midnight
 env:
