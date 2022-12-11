@@ -114,6 +114,15 @@ if [ "$?" != 0 ] ; then
 fi
 echo "55"
 
+echo "# Installing Protontricks"
+/usr/bin/flatpak install --user --noninteractive flathub com.github.Matoking.protontricks
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Protontricks failed"
+        exit 1
+fi
+echo "60"
+
 echo "# Installing Lutris"
 /usr/bin/flatpak install --user --noninteractive flathub net.lutris.Lutris
 if [ "$?" != 0 ] ; then
