@@ -49,10 +49,17 @@ echo "25"
 
 echo "# Removing Junk Flatpaks"
 /usr/bin/flatpak uninstall --user --noninteractive org.gnome.Maps
+/usr/bin/flatpak uninstall --system --noninteractive org.gnome.Maps
 /usr/bin/flatpak uninstall --user --noninteractive org.gnome.Extensions
+/usr/bin/flatpak uninstall --system --noninteractive org.gnome.Extensions
 /usr/bin/flatpak uninstall --user --noninteractive org.gnome.Contacts
+/usr/bin/flatpak uninstall --system --noninteractive org.gnome.Contacts
 /usr/bin/flatpak uninstall --user --noninteractive org.gnome.Characters
+/usr/bin/flatpak uninstall --system --noninteractive org.gnome.Characters
 /usr/bin/flatpak uninstall --user --noninteractive org.gnome.Weather
+/usr/bin/flatpak uninstall --system --noninteractive org.gnome.Weather
+/usr/bin/flatpak uninstall --user --noninteractive org.gnome.font-viewer
+/usr/bin/flatpak uninstall --system --noninteractive org.gnome.font-viewer
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Removing Junk Flatpaks Failed"
@@ -76,6 +83,17 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "40"
+
+flathub com.discordapp.Discord
+
+echo "# Installing Discrd"
+/usr/bin/flatpak install --user --noninteractive flathub com.discordapp.Discord
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Discord Failed"
+        exit 1
+fi
+echo "45"
 
 echo "# Installing Steam"
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
