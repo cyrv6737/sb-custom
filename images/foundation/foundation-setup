@@ -170,7 +170,7 @@ fi
 echo "90"
 
 echo "# Setting up Default Terminal Toolbox"
-/usr/bin/distrobox-create --image archlinux:latest --name Toolbox
+/usr/bin/distrobox-create --image archlinux:latest --name Toolbox --yes
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ visible-name Default
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ use-custom-command true
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ custom-command "distrobox enter Toolbox"
