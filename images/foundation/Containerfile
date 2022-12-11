@@ -15,7 +15,7 @@ rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfraclou
 RUN rpm-ostree override remove mesa-va-drivers --install=mesa-va-drivers-freeworld --install=mesa-vdpau-drivers-freeworld
 
 # Remove some junk
-RUN rpm-ostree override remove gnome-tour gnome-help
+RUN rpm-ostree override remove gnome-tour
 
 # Install and enable System76 Scheduler (kylegospo COPR)
 RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-$(rpm -E %fedora)/kylegospo-system76-scheduler-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
