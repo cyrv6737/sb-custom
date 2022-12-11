@@ -169,6 +169,38 @@ if [ "$?" != 0 ] ; then
 fi
 echo "90"
 
+echo "# Setting up Default Terminal Toolbox"
+/usr/bin/distrobox-create --image archlinux:latest --name Toolbox
+/usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ visible-name Default
+/usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ use-custom-command true
+/usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ custom-command "distrobox enter Toolbox"
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Failed to set up Toolbox"
+        exit 1
+fi
+echo "95"
+
+echo "# Setting up theme"
+/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+/usr/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+/usr/bin/gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Failed to Configure Theme"
+        exit 1
+fi
+echo "96"
+
+echo "# Disabling mouse acceleration"
+/usr/bin/gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Failed to disable mouse acceleration"
+        exit 1
+fi
+echo "97"
+
 echo "# Installing Celluloid Media Player"
 /usr/bin/flatpak install --user --noninteractive flathub io.github.celluloid_player.Celluloid
 if [ "$?" != 0 ] ; then
