@@ -4,7 +4,7 @@ on:
     paths:
       - 'images/foundation/**'
   schedule:
-    - cron: '0 0 * * *'  # every day at midnight
+    - cron: '0 0,12 * * *'  # Every day, twice daily
 env:
     IMAGE_NAME: foundation
     IMAGE_TAGS: latest ${{ github.sha }}
