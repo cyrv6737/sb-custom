@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if test -e "$HOME"/.config/sb-custom/basesetup-done; then
+if test -e "$HOME"/.config/sb-custom/foundation-setup; then
     echo "Already ran"
     exit 0
 fi
@@ -47,6 +47,27 @@ if [ "$?" != 0 ] ; then
 fi
 echo "25"
 
+echo "# Removing Junk Flatpaks"
+/usr/bin/flatpak uninstall --user --noninteractive org.gnome.Maps
+/usr/bin/flatpak uninstall --user --noninteractive org.gnome.Extensions
+/usr/bin/flatpak uninstall --user --noninteractive org.gnome.Contacts
+/usr/bin/flatpak uninstall --user --noninteractive org.gnome.Characters
+/usr/bin/flatpak uninstall --user --noninteractive org.gnome.Weather
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Removing Junk Flatpaks Failed"
+        exit 1
+fi
+
+echo "# Installing Gradience"
+/usr/bin/flatpak install --user --noninteractive flathub com.github.GradienceTeam.Gradience
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Gradience Failed"
+        exit 1
+fi
+echo "30"
+
 echo "# Installing Extension Manager"
 /usr/bin/flatpak install --user --noninteractive flathub com.mattjakeman.ExtensionManager
 if [ "$?" != 0 ] ; then
@@ -54,7 +75,35 @@ if [ "$?" != 0 ] ; then
           --text="Installing Extension Manager Failed"
         exit 1
 fi
+echo "40"
+
+echo "# Installing Steam"
+/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Steam Failed"
+        exit 1
+fi
 echo "50"
+
+
+echo "# Installing Proton-GE"
+/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Proton-GE Failed"
+        exit 1
+fi
+echo "55"
+
+echo "# Installing Lutris"
+/usr/bin/flatpak install --user --noninteractive flathub net.lutris.Lutris
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Lutris Failed"
+        exit 1
+fi
+echo "65"
 
 echo "# Installing LibreOffice"
 /usr/bin/flatpak install --user --noninteractive flathub org.libreoffice.LibreOffice
@@ -64,6 +113,16 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "70"
+
+
+echo "# Installing Protonup-QT"
+/usr/bin/flatpak install --user --noninteractive flathub net.davidotek.pupgui2
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing ProtonUP-QT Failed"
+        exit 1
+fi
+echo "75"
 
 echo "# Installing Font Downloader"
 /usr/bin/flatpak install --user --noninteractive flathub org.gustavoperedo.FontDownloader
@@ -94,11 +153,11 @@ echo "100"
 
 echo "# Reticulating Final Splines"
 mkdir -p "$HOME"/.config/sb-custom/
-touch "$HOME"/.config/sb-custom/basesetup-done
+touch "$HOME"/.config/sb-custom/foundation-done
 
 ) | 
      
-   zenity --progress --title="sb-custom Desktop Firstboot" --percentage=0 --auto-close --no-cancel --width=300
+   zenity --progress --title="Foundation Image Desktop Firstboot" --percentage=0 --auto-close --no-cancel --width=300
 
 if [ "$?" != 0 ] ; then
         zenity --error \
