@@ -60,6 +60,8 @@ echo "# Removing Junk Flatpaks"
 /usr/bin/flatpak uninstall --system --noninteractive org.gnome.Weather
 /usr/bin/flatpak uninstall --user --noninteractive org.gnome.font-viewer
 /usr/bin/flatpak uninstall --system --noninteractive org.gnome.font-viewer
+/usr/bin/flatpak uninstall --user --noninteractive org.gnome.Connections
+/usr/bin/flatpak uninstall --system --noninteractive org.gnome.Connections
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Removing Junk Flatpaks Failed"
