@@ -86,8 +86,14 @@ if [ "$?" != 0 ] ; then
 fi
 echo "40"
 
-echo "# Installing Discrd"
+echo "# Installing Discord"
 /usr/bin/flatpak install --user --noninteractive flathub com.discordapp.Discord
+echo "45"
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Discord Failed"
+        exit 1
+fi
 echo "45"
 
 echo "# Installing Steam"
@@ -165,15 +171,10 @@ fi
 echo "90"
 
 echo "# Setting up Default Terminal Toolbox"
-/usr/bin/distrobox-create --image fedora:37 --name Toolbox --yes
+/usr/bin/distrobox-create --image fedora:37 --name Toolbox --yes &> /dev/null
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ visible-name Default
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ use-custom-command true
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ custom-command "distrobox enter Toolbox"
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Failed to set up Toolbox"
-        exit 1
-fi
 echo "95"
 
 echo "# Setting up theme"
