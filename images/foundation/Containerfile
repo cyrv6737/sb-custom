@@ -1,6 +1,6 @@
 FROM ghcr.io/cgwalters/fedora-silverblue:37
 
-COPY images/foundation-plasma/foundation-setup /usr/bin
+COPY images/foundation/foundation-setup /usr/bin
 RUN chmod +x /usr/bin/foundation-setup
 
 # Enable RPM Fusion and install it properly to avoid local override issues
