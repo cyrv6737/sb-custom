@@ -88,11 +88,6 @@ echo "40"
 
 echo "# Installing Discrd"
 /usr/bin/flatpak install --user --noninteractive flathub com.discordapp.Discord
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Discord Failed"
-        exit 1
-fi
 echo "45"
 
 echo "# Installing Steam"
