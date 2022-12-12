@@ -11,8 +11,12 @@ Custom Fedora Silverblue OCI images for personal use.
   - [X] Enable Flathub
   - [X] Remove Fedora Flatpak Repo
   - [X] Switch over Fedora Flatpaks to Flathub Flatpaks
+  - [X] Commonly Used Flatpaks (Steam, Lutris, etc)
 - [ ] GNOME Customization
-- [ ] Distrobox autoupdate user service
+- [ ] Distrobox
+   - [X] Create and enable a Fedora toolbox as default CLI
+   - [ ] Install OBS in an arch distrobox and launch with AMDGPU-PRO for AMF support
+   - [ ] Auto update service 
 - [ ] Flatpak autoupdate service
 
 ## Images
