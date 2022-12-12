@@ -16,7 +16,7 @@ rpm-ostree install system76-scheduler && \
 systemctl enable com.system76.Scheduler.service
 
 # Install extra packages and finalize
-RUN rpm-ostree install distrobox libva-utils langpacks-en
+RUN rpm-ostree install distrobox libva-utils langpacks-en zenity
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
 RUN systemctl enable rpm-ostreed-automatic.timer
 RUN rpm-ostree cleanup -m
