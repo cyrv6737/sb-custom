@@ -22,9 +22,10 @@ RUN rpm-ostree override remove mesa-va-drivers --install=mesa-va-drivers-freewor
 # Remove some junk
 RUN rpm-ostree override remove gnome-tour
 
-# Sentry Kernel
-RUN wget https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/repo/fedora-$(rpm -E %fedora)/sentry-kernel-fsync-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_sentry_kernel_fsync.repo && \
-rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:sentry:kernel-fsync kernel kernel-core kernel-modules kernel-modules-extra kernel-headers kernel-devel
+# Install and enable System76 Scheduler (kylegospo COPR)
+RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-$(rpm -E %fedora)/kylegospo-system76-scheduler-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
+rpm-ostree install system76-scheduler && \
+systemctl enable com.system76.Scheduler.service
 
 # Install and enable adw-gtk3
 RUN wget https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-$(rpm -E %fedora)/nickavem-adw-gtk3-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_nickavem-adw-gtk3.repo && \
