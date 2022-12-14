@@ -82,13 +82,21 @@ echo "40"
 
 echo "# Installing Discord"
 /usr/bin/flatpak install --user --noninteractive flathub com.discordapp.Discord
-echo "45"
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing Discord Failed"
         exit 1
 fi
 echo "45"
+
+echo "# Installing OpenRGB"
+/usr/bin/flatpak install --user --noninteractive flathub org.openrgb.OpenRGB
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing OpenRGB Failed"
+        exit 1
+fi
+echo "47"
 
 echo "# Installing Steam"
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
