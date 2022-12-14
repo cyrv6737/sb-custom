@@ -28,6 +28,20 @@ if [ "$?" != 0 ] ; then
 fi
 echo "5"
 
+echo "# Removing Junk Flatpaks"
+/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Maps
+/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Contacts
+/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Characters
+/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Weather
+/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.font-viewer
+/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Connections
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Removing Junk Flatpaks Failed"
+        exit 1
+fi
+echo "15"
+
 echo "# Replacing Fedora Flatpaks with Flathub Ones"
 /usr/bin/flatpak install --user --noninteractive org.gnome.Platform//43
 /usr/bin/flatpak install --user --noninteractive --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
@@ -47,18 +61,6 @@ if [ "$?" != 0 ] ; then
 fi
 echo "25"
 
-echo "# Removing Junk Flatpaks"
-/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Maps
-/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Contacts
-/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Characters
-/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Weather
-/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.font-viewer
-/usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Connections
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Removing Junk Flatpaks Failed"
-        exit 1
-fi
 
 echo "# Installing Gradience"
 /usr/bin/flatpak install --user --noninteractive flathub com.github.GradienceTeam.Gradience
