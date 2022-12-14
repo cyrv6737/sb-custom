@@ -2,10 +2,11 @@ FROM ghcr.io/cgwalters/fedora-silverblue:37
 
 COPY images/foundation/foundation-setup /usr/bin
 RUN chmod +x /usr/bin/foundation-setup
-COPY images/foundation/distrobox-upgrade-automatic.timer /opt
-COPY images/foundation/distrobox-upgrade-automatic.service /opt
-COPY images/foundation/flatpak-upgrade-automatic.timer /opt
-COPY images/foundation/flatpak-upgrade-automatic.service /opt
+RUN mkdir /usr/share/foundation
+COPY images/foundation/distrobox-upgrade-automatic.timer /usr/share/foundation
+COPY images/foundation/distrobox-upgrade-automatic.service /usr/share/foundation
+COPY images/foundation/flatpak-upgrade-automatic.timer /usr/share/foundation
+COPY images/foundation/flatpak-upgrade-automatic.service /usr/share/foundation
 
 # Enable RPM Fusion and install it properly to avoid local override issues
 RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
