@@ -20,8 +20,8 @@ Custom Fedora Silverblue OCI images for personal use.
 - [ ] Distrobox
    - [X] Create and enable a Fedora toolbox as default CLI
    - [ ] Install OBS in an arch distrobox and launch with AMDGPU-PRO for AMF support
-   - [ ] Auto update service 
-- [ ] Flatpak autoupdate service
+   - [X] Auto update service 
+- [X] Flatpak autoupdate service
 
 ## Images
 
