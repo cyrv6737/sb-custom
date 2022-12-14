@@ -138,6 +138,15 @@ if [ "$?" != 0 ] ; then
 fi
 echo "65"
 
+echo "# Installing Heroic Games Launcher"
+/usr/bin/flatpak install --user --noninteractive flathub com.heroicgameslauncher.hgl
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Heroic Failed"
+        exit 1
+fi
+echo "68"
+
 echo "# Installing LibreOffice"
 /usr/bin/flatpak install --user --noninteractive flathub org.libreoffice.LibreOffice
 if [ "$?" != 0 ] ; then
