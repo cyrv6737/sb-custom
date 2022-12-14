@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if test -e "$HOME"/.config/sb-custom/foundation-setup; then
+if test -e "$HOME"/.config/sb-custom/foundation-done; then
     echo "Already ran"
     exit 0
 fi
