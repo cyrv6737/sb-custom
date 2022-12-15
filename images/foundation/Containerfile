@@ -15,9 +15,6 @@ rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfraclou
 # Install mesa-freeworld for proper video decode in native firefox
 RUN rpm-ostree override remove mesa-va-drivers --install=mesa-va-drivers-freeworld --install=mesa-vdpau-drivers-freeworld
 
-# Remove some junk
-RUN rpm-ostree override remove gnome-tour
-
 # Install and enable System76 Scheduler (kylegospo COPR)
 RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-$(rpm -E %fedora)/kylegospo-system76-scheduler-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
 rpm-ostree install system76-scheduler && \
@@ -28,8 +25,8 @@ RUN wget https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-$
 rpm-ostree install adw-gtk3
 
 # Remove native firefox. I'm not sure if this is something I want to keep so this will need testing.
-# Also removing toolbox (stinky)
-RUN rpm-ostree override remove firefox firefox-langpacks toolbox
+# Also removing toolbox (stinky) and gnome-tour (unknown horrors)
+RUN rpm-ostree override remove firefox firefox-langpacks toolbox gnome-tour
 
 # Install extra packages and finalize
 RUN rpm-ostree install \
