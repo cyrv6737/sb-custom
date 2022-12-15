@@ -185,20 +185,10 @@ fi
 echo "90"
 
 echo "# Setting up Distrobox Automatic upgrades"
-/usr/bin/cp /usr/share/foundation/distrobox-upgrade-automatic.timer $HOME/.config/systemd/user/distrobox-upgrade-automatic.timer
-/usr/bin/cp /usr/share/foundation/distrobox-upgrade-automatic.service $HOME/.config/systemd/user/distrobox-upgrade-automatic.service
-sudo chown $USER $HOME/.config/systemd/user/distrobox-upgrade-automatic.timer
-sudo chown $USER $HOME/.config/systemd/user/distrobox-upgrade-automatic.service
-/usr/bin/systemctl --user daemon-reload
 /usr/bin/systemctl --user enable distrobox-upgrade-automatic.timer
 echo "91"
 
 echo "# Setting up Flatpak Automatic upgrades"
-/usr/bin/cp /usr/share/foundation/flatpak-upgrade-automatic.timer $HOME/.config/systemd/user/flatpak-upgrade-automatic.timer
-/usr/bin/cp /usr/share/foundation/flatpak-upgrade-automatic.service $HOME/.config/systemd/user/flatpak-upgrade-automatic.service
-sudo chown $USER $HOME/.config/systemd/user/flatpak-upgrade-automatic.timer
-sudo chown $USER $HOME/.config/systemd/user/flatpak-upgrade-automatic.service
-/usr/bin/systemctl --user daemon-reload
 /usr/bin/systemctl --user enable flatpak-upgrade-automatic.timer
 echo "92"
 
