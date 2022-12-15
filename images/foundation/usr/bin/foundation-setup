@@ -74,10 +74,19 @@ echo "25"
 
 
 echo "# Installing Gradience"
-/usr/bin/flatpak install --user --noninteractive flathub com.github.GradienceTeam.Gradience
+/usr/bin/flatpak install --user --system --noninteractive flathub com.github.GradienceTeam.Gradience
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing Gradience Failed"
+        exit 1
+fi
+echo "30"
+
+echo "# Installing Drawing"
+/usr/bin/flatpak install --user --noninteractive flathub com.github.maoschanz.drawing
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Drawing Failed"
         exit 1
 fi
 echo "30"
