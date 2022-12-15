@@ -21,6 +21,7 @@ echo "3"
 
 echo "# Enabling Flathub Repository"
 /usr/bin/flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists --user flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Adding Flathub Repo Failed"
@@ -165,6 +166,16 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "75"
+
+echo "# Installing Mesa-git"
+/usr/bin/flatpak install --user --noninteractive flathub-beta runtime/org.freedesktop.Platform.GL32.mesa-git/x86_64/22.08
+/usr/bin/flatpak install --user --noninteractive flathub-beta runtime/org.freedesktop.Platform.GL.mesa-git/x86_64/22.08
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing mesa-git failed"
+        exit 1
+fi
+echo "80"
 
 echo "# Installing Font Downloader"
 /usr/bin/flatpak install --user --noninteractive flathub org.gustavoperedo.FontDownloader
