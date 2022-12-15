@@ -133,12 +133,25 @@ echo "# Installing Steam Utilities"
 /usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.MangoHud
 /usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.vkBasalt
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.Utility.gamescope
+/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.OBSVkCapture
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing Proton-GE Failed"
         exit 1
 fi
-echo "55"
+echo "52"
+
+echo "# Installing OBS Studio and related utilities"
+/usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio
+/usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio.Plugin.Gstreamer
+/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.GStreamer.gstreamer-vaapi
+/usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio.Plugin.OBSVkCapture
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing OBS stuff failed"
+        exit 1
+fi
+echo "52"
 
 echo "# Installing Protontricks"
 /usr/bin/flatpak install --user --noninteractive flathub com.github.Matoking.protontricks
