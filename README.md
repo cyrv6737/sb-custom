@@ -6,13 +6,15 @@ Custom Fedora Silverblue OCI images for personal use.
 
 ## TODO
 
-- [ ] GNOME Extensions
-- [ ] Flatpaks
+- [X] Flatpaks
   - [X] Enable Flathub
   - [X] Remove Fedora Flatpak Repo
   - [X] Switch over Fedora Flatpaks to Flathub Flatpaks
   - [X] Commonly Used Flatpaks (Steam, Lutris, etc)
-  - [ ] Replace native Firefox with flatpak version?
+  - [X] Replace native Firefox with flatpak version *NOTE: I am unsure if I want to keep this as a permanent replacement. This will require testing.*
+  - [X] OBS Studio
+    - [X] VKCapture
+    - [X] Gstreamer-VAAPI
   - [X] Add built-in shortcuts for Mesa-git stuff
     - [X] Lutris
     - [X] Steam
@@ -22,11 +24,11 @@ Custom Fedora Silverblue OCI images for personal use.
   - [X] Enable GTK4 Dark
   - [X] Enable Min/Max buttons in titlebar
   - [X] Install Gradience Flatpak 
-- [ ] Distrobox
+- [X] Distrobox
    - [X] Create and enable a Fedora toolbox as default CLI
-   - [ ] Install OBS in an arch distrobox and launch with AMDGPU-PRO for AMF support
    - [X] Auto update service 
 - [X] Flatpak autoupdate service
+- [ ] Automate adding a Host profile to gnome-terminal
 
 ## Images
 
