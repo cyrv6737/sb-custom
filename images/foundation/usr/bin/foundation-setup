@@ -151,7 +151,7 @@ if [ "$?" != 0 ] ; then
           --text="Installing OBS stuff failed"
         exit 1
 fi
-echo "52"
+echo "57"
 
 echo "# Installing Protontricks"
 /usr/bin/flatpak install --user --noninteractive flathub com.github.Matoking.protontricks
