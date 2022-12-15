@@ -12,6 +12,7 @@ Custom Fedora Silverblue OCI images for personal use.
   - [X] Remove Fedora Flatpak Repo
   - [X] Switch over Fedora Flatpaks to Flathub Flatpaks
   - [X] Commonly Used Flatpaks (Steam, Lutris, etc)
+  - [ ] Replace native Firefox with flatpak version?
   - [ ] Add built-in shortcuts for Mesa-git stuff
     - [X] Lutris
     - [ ] Steam
