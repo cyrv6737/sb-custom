@@ -34,3 +34,11 @@ Custom Fedora Silverblue OCI images for personal use.
 ```
 rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation:latest
 ```
+
+### Foundation-Plamsa
+
+Do not directly pull this image. Rebase to `foundation:latest` first, run `foundation-setup`, then rebase to `foundation-plasma:latest`.
+
+```
+rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation-plasma:latest
+```
