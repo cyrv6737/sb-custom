@@ -16,7 +16,7 @@ Custom Fedora Silverblue OCI images for personal use.
     - [X] Lutris
     - [ ] Steam
     - [ ] Heroic
-- [ ] GNOME Customization
+- [X] GNOME Customization
   - [X] Download and enable adw-gtk3
   - [X] Enable GTK4 Dark
   - [X] Enable Min/Max buttons in titlebar
