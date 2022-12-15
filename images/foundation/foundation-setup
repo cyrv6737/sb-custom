@@ -29,6 +29,10 @@ if [ "$?" != 0 ] ; then
 fi
 echo "5"
 
+echo "# Installing Firefox Flatpak"
+/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
+/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.ffmpeg-full
+
 echo "# Removing Junk Flatpaks"
 /usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Maps
 /usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Contacts
