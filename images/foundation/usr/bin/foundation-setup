@@ -31,7 +31,7 @@ echo "5"
 
 echo "# Installing Firefox Flatpak"
 /usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
-/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.ffmpeg-full
+/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/22.08
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing Firefox failed"
