@@ -29,7 +29,7 @@ RUN wget https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-$
 rpm-ostree install adw-gtk3
 
 # Remove native firefox. I'm not sure if this is something I want to keep so this will need testing.
-RUN rpm-ostree override remove firefox
+RUN rpm-ostree override remove firefox firefox-langpacks
 
 # Install extra packages and finalize
 RUN rpm-ostree install \
@@ -43,7 +43,6 @@ gstreamer1-plugins-ugly \
 totem \
 libva-utils \
 NetworkManager-sstp \
-langpacks-en \
 duperemove && \
 sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
 systemctl enable rpm-ostreed-automatic.timer && \
