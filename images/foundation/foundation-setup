@@ -32,6 +32,12 @@ echo "5"
 echo "# Installing Firefox Flatpak"
 /usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
 /usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.ffmpeg-full
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Firefox failed"
+        exit 1
+fi
+echo "10"
 
 echo "# Removing Junk Flatpaks"
 /usr/bin/flatpak uninstall --user --system --noninteractive org.gnome.Maps
