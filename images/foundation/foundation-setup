@@ -111,9 +111,9 @@ echo "50"
 
 echo "# Installing Steam Utilities"
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
-/usr/bin/flatpak install --user --noninteractive org.freedesktop.Platform.VulkanLayer.MangoHud
-/usr/bin/flatpak install --user --noninteractive org.freedesktop.Platform.VulkanLayer.vkBasalt
-/usr/bin/flatpak install --user --noninteractive com.valvesoftware.Steam.Utility.gamescope
+/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.MangoHud
+/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.vkBasalt
+/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.Utility.gamescope
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing Proton-GE Failed"
