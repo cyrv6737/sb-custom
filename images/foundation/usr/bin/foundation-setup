@@ -199,6 +199,15 @@ if [ "$?" != 0 ] ; then
 fi
 echo "75"
 
+echo "# Installing Prism Launcher"
+/usr/bin/flatpak install --user --noninteractive flathub org.prismlauncher.PrismLauncher
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Prism Launcher Failed"
+        exit 1
+fi
+echo "78"
+
 echo "# Installing Mesa-git"
 /usr/bin/flatpak install --user --noninteractive flathub-beta runtime/org.freedesktop.Platform.GL32.mesa-git/x86_64/22.08
 /usr/bin/flatpak install --user --noninteractive flathub-beta runtime/org.freedesktop.Platform.GL.mesa-git/x86_64/22.08
