@@ -149,10 +149,10 @@ echo "50"
 
 echo "# Installing Steam Utilities"
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
-/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.MangoHud
-/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.vkBasalt
+/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08
+/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.VulkanLayer.vkBasalt/x86_64/22.08
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.Utility.gamescope
-/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.VulkanLayer.OBSVkCapture
+/usr/bin/flatpak install --user --noninteractive runtime/org.freedesktop.Platform.VulkanLayer.OBSVkCapture/x86_64/22.08
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing Proton-GE Failed"
@@ -163,7 +163,7 @@ echo "52"
 echo "# Installing OBS Studio and related utilities"
 /usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio
 /usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio.Plugin.Gstreamer
-/usr/bin/flatpak install --user --noninteractive flathub org.freedesktop.Platform.GStreamer.gstreamer-vaapi
+/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.GStreamer.gstreamer-vaapi/x86_64/22.08
 /usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio.Plugin.OBSVkCapture
 if [ "$?" != 0 ] ; then
         zenity --error \
