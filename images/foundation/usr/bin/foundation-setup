@@ -1,4 +1,4 @@
-#!/bin/shagain
+#!/bin/sh
 
 ##### trying dconf horrors again
 dconfdir=/org/gnome/terminal/legacy/profiles:
