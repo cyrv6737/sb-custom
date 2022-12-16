@@ -277,7 +277,15 @@ echo "# Setting up Default Terminal Toolbox"
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ visible-name Default
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ use-custom-command true
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ custom-command "distrobox enter Toolbox"
-echo "95"
+echo "93"
+
+echo "# Setting up VSCode in Toolbox"
+/usr/bin/distrobox-enter -n Toolbox -- sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+/usr/bin/distrobox-enter -n Toolbox -- sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+/usr/bin/distrobox-enter -n Toolbox -- sudo dnf upgrade -y
+/usr/bin/distrobox-enter -n Toolbox -- sudo dnf install code -y
+/usr/bin/distrobox-enter -n Toolbox -- distrobox-export --app code
+echo "94"
 
 echo "# Setting up theme"
 /usr/bin/gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
