@@ -230,13 +230,6 @@ if [ "$?" != 0 ] ; then
 fi
 echo "80"
 
-echo "# Installing Solaar"
-/usr/bin/distrobox-create --image fedora:37 --name solaar-container --yes &> /dev/null
-/usr/bin/distrobox-enter solaar-container -- sudo dnf upgrade -y
-/usr/bin/distrobox-enter solaar-container -- sudo dnf install solaar -y
-/usr/bin/distrobox-enter solaar-container -- distrobox-export --app solaar
-echo "83"
-
 echo "# Installing Font Downloader"
 /usr/bin/flatpak install --user --noninteractive flathub org.gustavoperedo.FontDownloader
 if [ "$?" != 0 ] ; then
@@ -270,14 +263,6 @@ echo "# Setting up Default Terminal Toolbox"
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ custom-command "distrobox enter Toolbox"
 echo "93"
 
-echo "# Setting up VSCode in Toolbox"
-/usr/bin/distrobox-enter -n Toolbox -- sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-/usr/bin/distrobox-enter -n Toolbox -- sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-/usr/bin/distrobox-enter -n Toolbox -- sudo dnf upgrade -y
-/usr/bin/distrobox-enter -n Toolbox -- sudo dnf install code -y
-/usr/bin/distrobox-enter -n Toolbox -- distrobox-export --app code
-echo "94"
-
 echo "# Setting up theme"
 /usr/bin/gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
 /usr/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
@@ -287,7 +272,7 @@ if [ "$?" != 0 ] ; then
           --text="Failed to Configure Theme"
         exit 1
 fi
-echo "96"
+echo "95"
 
 echo "# Disabling mouse acceleration"
 /usr/bin/gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
