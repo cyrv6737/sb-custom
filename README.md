@@ -4,8 +4,11 @@ Custom Fedora Silverblue OCI images for personal use.
 
 
 
-## TODO
+# TODO
 
+Checklists for various current and planned images.
+
+## "Foundation" Image
 - [X] Flatpaks
   - [X] Enable Flathub
   - [X] Remove Fedora Flatpak Repo
@@ -27,8 +30,18 @@ Custom Fedora Silverblue OCI images for personal use.
 - [X] Distrobox
    - [X] Create and enable a Fedora toolbox as default CLI
    - [X] Auto update service 
+   - [X] Create distrobox and export Solaar for logitech devices
 - [X] Flatpak autoupdate service
 - [ ] Automate adding a Host profile to gnome-terminal
+- [ ] Name
+
+## "Workstation" Image
+- [ ] Derive from "Foundation"
+- [ ] Remove gaming related flatpaks and layers
+- [ ] Name
+
+## Fedora Serverblue
+- [ ] Remove a bunch of stuff idk
 
 ## Images
 
