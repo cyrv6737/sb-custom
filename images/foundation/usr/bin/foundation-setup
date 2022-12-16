@@ -241,9 +241,9 @@ echo "80"
 
 echo "# Installing Solaar"
 /usr/bin/distrobox-create --image fedora:37 --name solaar-container --yes &> /dev/null
-/usr/bin/distrobox-enter solaar-container -- sudo dnf upgrade -y &> /dev/null
-/usr/bin/distrobox-enter solaar-container -- sudo dnf install solaar -y &> /dev/null
-/usr/bin/distrobox-enter solaar-container -- distrobox-export --app solaar &> /dev/null
+/usr/bin/distrobox-enter solaar-container -- sudo dnf upgrade -y
+/usr/bin/distrobox-enter solaar-container -- sudo dnf install solaar -y
+/usr/bin/distrobox-enter solaar-container -- distrobox-export --app solaar
 echo "83"
 
 echo "# Installing Font Downloader"
