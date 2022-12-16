@@ -1,4 +1,25 @@
-#!/bin/sh
+#!/bin/shagain
+
+##### trying dconf horrors again
+dconfdir=/org/gnome/terminal/legacy/profiles:
+
+create_new_profile() {
+    local profile_ids=($(/usr/bin/dconf list $dconfdir/ | grep ^: |\
+                        sed 's/\///g' | sed 's/://g'))
+    local profile_name="$1"
+    local profile_ids_old="$(/usr/bin/dconf read "$dconfdir"/list | tr -d "]")"
+    local profile_id="$(uuidgen)"
+
+    [ -z "$profile_ids_old" ] && local profile_ids_old="["  # if there's no `list` key
+    [ ${#profile_ids[@]} -gt 0 ] && local delimiter=,  # if the list is empty
+    /usr/bin/dconf write $dconfdir/list \
+        "${profile_ids_old}${delimiter} '$profile_id']"
+    /usr/bin/dconf write "$dconfdir/:$profile_id"/visible-name "'$profile_name'"
+    echo $profile_id
+}
+
+#### end of dconf horrors
+
 
 if test -e "$HOME"/.config/sb-custom/foundation-done; then
     echo "Already ran"
@@ -277,6 +298,10 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "97"
+
+echo "Adding Host Profile to Terminal"
+id=$(create_new_profile TEST)
+echo "99"
 
 echo "# Installing Celluloid Media Player"
 /usr/bin/flatpak install --user --noninteractive flathub io.github.celluloid_player.Celluloid
