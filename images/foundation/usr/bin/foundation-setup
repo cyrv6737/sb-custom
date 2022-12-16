@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ##### trying dconf horrors again
 dconfdir=/org/gnome/terminal/legacy/profiles:
