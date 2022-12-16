@@ -298,6 +298,7 @@ fi
 echo "97"
 
 echo "# Creating Host profile for Terminal"
+/usr/bin/gnome-terminal -- /bin/bash exit
 id=$(create_new_profile Host)
 echo "99"
 
