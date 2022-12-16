@@ -30,7 +30,6 @@ Checklists for various current and planned images.
 - [X] Distrobox
    - [X] Create and enable a Fedora toolbox as default CLI
    - [X] Auto update service 
-   - [X] Create distrobox and export Solaar for logitech devices
 - [X] Flatpak autoupdate service
 - [ ] Name
 
