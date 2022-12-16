@@ -32,7 +32,6 @@ Checklists for various current and planned images.
    - [X] Auto update service 
    - [X] Create distrobox and export Solaar for logitech devices
 - [X] Flatpak autoupdate service
-- [ ] Automate adding a Host profile to gnome-terminal
 - [ ] Name
 
 ## "Workstation" Image
@@ -50,6 +49,8 @@ Checklists for various current and planned images.
 ```
 rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation:latest
 ```
+
+**Manual Intervention:** After the first-time boot script runs, open Terminal -> Preferences, then create a new profile called `Host`. No other configuration is needed. This will allow you to easily open a host terminal when necessary while keeping the default shell the Fedora Distrobox.
 
 ### Foundation-Plamsa
 
