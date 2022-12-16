@@ -130,15 +130,6 @@ if [ "$?" != 0 ] ; then
 fi
 echo "45"
 
-echo "# Installing OpenRGB"
-/usr/bin/flatpak install --user --noninteractive flathub org.openrgb.OpenRGB
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing OpenRGB Failed"
-        exit 1
-fi
-echo "47"
-
 echo "# Installing Steam"
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
 if [ "$?" != 0 ] ; then
