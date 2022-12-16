@@ -308,7 +308,7 @@ fi
 echo "97"
 
 echo "Adding Host Profile to Terminal"
-id=$(create_new_profile TEST)
+id=$(create_new_profile Host)
 echo "99"
 
 echo "# Installing Celluloid Media Player"
