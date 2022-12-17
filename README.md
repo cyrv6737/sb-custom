@@ -49,7 +49,11 @@ Checklists for various current and planned images.
 rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation:latest
 ```
 
-**Manual Intervention:** After the first-time boot script runs, open Terminal -> Preferences, then create a new profile called `Host`. No other configuration is needed. This will allow you to easily open a host terminal when necessary while keeping the default shell the Fedora Distrobox.
+**Manual Intervention:** 
+
+- After the first-time boot script runs, open Terminal -> Preferences, then create a new profile called `Host`. No other configuration is needed. This will allow you to easily open a host terminal when necessary while keeping the default shell the Fedora Distrobox.
+
+- Manually install the system76-scheduler GNOME Extension to properly use the enabled systemd service.
 
 ### Foundation-Plamsa
 
