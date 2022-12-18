@@ -9,28 +9,6 @@ Custom Fedora Silverblue OCI images for personal use.
 Checklists for various current and planned images.
 
 ## "Foundation" Image
-- [X] Flatpaks
-  - [X] Enable Flathub
-  - [X] Remove Fedora Flatpak Repo
-  - [X] Switch over Fedora Flatpaks to Flathub Flatpaks
-  - [X] Commonly Used Flatpaks (Steam, Lutris, etc)
-  - [X] Replace native Firefox with flatpak version *NOTE: I am unsure if I want to keep this as a permanent replacement. This will require testing.*
-  - [X] OBS Studio
-    - [X] VKCapture
-    - [X] Gstreamer-VAAPI
-  - [X] Add built-in shortcuts for Mesa-git stuff
-    - [X] Lutris
-    - [X] Steam
-    - [X] Heroic
-- [X] GNOME Customization
-  - [X] Download and enable adw-gtk3
-  - [X] Enable GTK4 Dark
-  - [X] Enable Min/Max buttons in titlebar
-  - [X] Install Gradience Flatpak 
-- [X] Distrobox
-   - [X] Create and enable a Fedora toolbox as default CLI
-   - [X] Auto update service 
-- [X] Flatpak autoupdate service
 - [ ] Name
 
 ## "Workstation" Image
@@ -41,24 +19,48 @@ Checklists for various current and planned images.
 ## Fedora Serverblue
 - [ ] Remove a bunch of stuff idk
 
-## Images
+# Images
 
-### Foundation
+## Foundation
 
 ```
 rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation:latest
 ```
 
-**Manual Intervention:** 
+### Features
 
-- After the first-time boot script runs, open Terminal -> Preferences, then create a new profile called `Host`. No other configuration is needed. This will allow you to easily open a host terminal when necessary while keeping the default shell the Fedora Distrobox.
+- Fedora Silverblue base image pulled from the new quay.io registry
+- RPMFusion
+- Thumbnails for video files in Nautilus
+- Experimental gnome-vrr MR, [COPR maintained by kylegospo](https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/)
+- System76-scheduler installed and enabled by default, [COPR maintained by kylegospo](https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/)
+  - **Manual Intervention**: The user will need to install the [system76-scheduler gnome extension to make this work 100%](https://extensions.gnome.org/extension/4854/system76-scheduler/)
+- `mesa-freeworld` to enable complete video codec decode
+- Firefox removed from base image and reinstalled as a Flatpak
+  - Subject to change with testing
+- `adw-gtk3` theme installed and enabled by default, [COPR maintained by nickavem](https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/)
+- Problematic version of rpm-ostree patched
+- Toolbox removed and replaced with the superior Distrobox
+- Udev rules for Solaar and Steam
+- Default terminal session replaced with a Fedora 37 Distrobox
+  - **Manual Intervention**: The user will need to duplicate the `Default` gnome-terminal profile in `Perferences` and until the custom command option in the last tab. This will add a profile to run commands on the host Silverblue installation.
+- Auto Updates
+  - Staged base system upgrades
+  - Flatpak upgrades
+  - All Distrobox container upgrades (AUR not included when using Arch containers)
+- Duperemove service that runs weekly
+  - **Manual Intervention**: User will have to enable this service
+- First-time boot script:
+  - Flatpaks
+    - Removes Fedora Flatpak repo
+    - Installs Flathub and Flathub-beta repos
+    - Removes junk Flatpaks
+    - Replaces remaining Fedora Flatpaks with Flathub ones
+    - Installs: Gradience, Drawing, Extension Manager, Discord, Steam, Lutris, OBS, Protontricks, Heroic, LibreOffice, Protonup-QT, Prism Launcher, Font Downloader, Celluloid, and Flatseal
+    - Steam: additionally installs MangoHud, vkBasalt, gamescope, and OBSVkCapture
+    - OBS: additionally installs Gstreamer, Gstreamer-VAAPI, and OBSVkCapture
+    - Adds Application Shortcuts to launch Steam, Lutris, and Heroic with Mesa-git
+  - Disable Mouse Acceleration
+  - Enable Min/Max/Close on the right of the Title Bar
 
-- Manually install the system76-scheduler GNOME Extension to properly use the enabled systemd service.
 
-### Foundation-Plamsa
-
-Do not directly pull this image. Rebase to `foundation:latest` first, run `foundation-setup`, then rebase to `foundation-plasma:latest`.
-
-```
-rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation-plasma:latest
-```
