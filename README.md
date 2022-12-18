@@ -1,27 +1,10 @@
-# sb-custom
+# Images
 
 Custom Fedora Silverblue OCI images for personal use.
 
-
-
-# TODO
-
-Checklists for various current and planned images.
-
-## "Foundation" Image
-- [ ] Name
-
-## "Workstation" Image
-- [ ] Derive from "Foundation"
-- [ ] Remove gaming related flatpaks and layers
-- [ ] Name
-
-## Fedora Serverblue
-- [ ] Remove a bunch of stuff idk
-
-# Images
-
 ## Foundation
+
+An image created with the intention of giving a complete hassle free desktop experience OOTB.
 
 ```
 rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/foundation:latest
@@ -63,4 +46,14 @@ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/fou
   - Disable Mouse Acceleration
   - Enable Min/Max/Close on the right of the Title Bar
 
+### TODO
+- [ ] Name
 
+
+## "Workstation" Image
+
+**Soon**
+
+## Fedora Serverblue
+
+**Soon**
