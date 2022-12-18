@@ -1,5 +1,5 @@
 # FROM ghcr.io/cgwalters/fedora-silverblue:37
-FROM quay.io/fedora-ostree-desktops/silverblue
+FROM quay.io/fedora-ostree-desktops/silverblue:37
 
 COPY images/foundation/etc /etc
 COPY images/foundation/usr /usr
