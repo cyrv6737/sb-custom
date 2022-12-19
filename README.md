@@ -40,7 +40,8 @@ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/fou
     - Removes junk Flatpaks
     - Replaces remaining Fedora Flatpaks with Flathub ones
     - Installs: Gradience, Drawing, Extension Manager, Discord, Steam, Lutris, OBS, Protontricks, Heroic, LibreOffice, Protonup-QT, Prism Launcher, Font Downloader, Celluloid, and Flatseal
-    - Steam: additionally installs MangoHud, vkBasalt, gamescope, and OBSVkCapture
+    - Steam: additionally installs MangoHud, vkBasalt, gamescope, OBSVkCapture, Proton, Proton-Experimental, Proton-GE
+      - **Manual Intervention**: Steam **must** use one of these Proton versions that are labelled as "community builds". Otherwise you will run into sandboxing problems. I recommend setting either Proton-GE or Proton-Experimental community build as the default Proton runner.
     - OBS: additionally installs Gstreamer, Gstreamer-VAAPI, and OBSVkCapture
     - Adds Application Shortcuts to launch Steam, Lutris, and Heroic with Mesa-git
   - Disable Mouse Acceleration
