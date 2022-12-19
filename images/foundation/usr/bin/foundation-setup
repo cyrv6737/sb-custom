@@ -127,6 +127,7 @@ echo "# Installing Steam Utilities"
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-Exp
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/21.08
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing Steam Utilities failed"
