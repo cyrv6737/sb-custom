@@ -15,7 +15,7 @@ cd yay-bin && \
 makepkg -si --noconfirm && \
 cd .. && \
 rm -drf yay-bin && \
-yay -S aur/mangohud aur/obs-vkcapture aur/protontricks --noconfirm
+yay -S aur/mangohud aur/obs-vkcapture aur/protontricks aur/goverlay-bin aur/libstrangle --noconfirm
 USER root
 WORKDIR /
 RUN  userdel -r build && \
