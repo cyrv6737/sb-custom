@@ -12,9 +12,11 @@ USER build
 WORKDIR /home/build
 RUN git clone https://aur.archlinux.org/yay-bin.git && \
 cd yay-bin && \
-makepkg -si && \
+makepkg -si --noconfirm && \
 cd .. && \
 rm yay-bin && \
 yay -S aur/mangohud aur/obs-vkcapture aur/protontricks --noconfirm
 USER root
-RUN  userdel -r build
+WORKDIR /
+RUN  userdel -r build && \
+rm /home/build
