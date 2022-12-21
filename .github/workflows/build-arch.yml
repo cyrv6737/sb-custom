@@ -1,4 +1,4 @@
-name: build-sb-custom-foundation
+name: build-sb-custom-archimage
 on:
   push:
     paths:
