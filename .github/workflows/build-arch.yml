@@ -4,7 +4,7 @@ on:
     paths:
       - 'images/arch/**'
   schedule:
-    - cron: '0 0,12 * * *'  # Every day, twice daily
+    - cron: '0 0 * * *'  # Once per day
 env:
     IMAGE_NAME: arch-steam-lutris
     IMAGE_TAGS: latest ${{ github.sha }}
