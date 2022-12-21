@@ -109,32 +109,6 @@ if [ "$?" != 0 ] ; then
 fi
 echo "45"
 
-echo "# Installing Steam"
-/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Steam Failed"
-        exit 1
-fi
-echo "50"
-
-
-echo "# Installing Steam Utilities"
-/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/22.08
-/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.VulkanLayer.vkBasalt/x86_64/22.08
-/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.Utility.gamescope
-/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.VulkanLayer.OBSVkCapture/x86_64/22.08
-/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton
-/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-Exp
-/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
-/usr/bin/flatpak install --user --noninteractive flathub runtime/org.freedesktop.Platform.ffmpeg_full.i386/x86_64/21.08
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Steam Utilities failed"
-        exit 1
-fi
-echo "52"
-
 echo "# Installing OBS Studio and related utilities"
 /usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio
 /usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio.Plugin.Gstreamer
@@ -146,33 +120,6 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "57"
-
-echo "# Installing Protontricks"
-/usr/bin/flatpak install --user --noninteractive flathub com.github.Matoking.protontricks
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Protontricks failed"
-        exit 1
-fi
-echo "60"
-
-echo "# Installing Lutris"
-/usr/bin/flatpak install --user --noninteractive flathub net.lutris.Lutris
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Lutris Failed"
-        exit 1
-fi
-echo "65"
-
-echo "# Installing Heroic Games Launcher"
-/usr/bin/flatpak install --user --noninteractive flathub com.heroicgameslauncher.hgl
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Heroic Failed"
-        exit 1
-fi
-echo "68"
 
 echo "# Installing LibreOffice"
 /usr/bin/flatpak install --user --noninteractive flathub org.libreoffice.LibreOffice
