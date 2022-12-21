@@ -1,0 +1,13 @@
+FROM docker.io/archlinux:base-devel
+
+RUN sed -i 's/#Color/Color/g' /etc/pacman.conf && \
+printf "[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" | sudo tee -a /etc/pacman.conf && \
+pacman -Syu && \
+pacman -S base-devel git lib32-mesa lib32-vulkan-radeon vulkan-radeon --noconfirm && \
+pacman -S steam lutris --noconfirm && \
+git clone https://aur.archlinux.org/yay-bin.git && \
+cd yay-bin && \
+makepkg -si && \
+cd .. && \
+rm yay-bin && \
+yay -S aur/mangohud aur/obs-vkcapture aur/protontricks --noconfirm
