@@ -109,6 +109,15 @@ if [ "$?" != 0 ] ; then
 fi
 echo "45"
 
+echo "# Setting up Steam and Lutris"
+/usr/bin/distrobox-create --name arch --image ghcr.io/cyrv6737/arch-steam-lutris:latest &> /dev/null
+/usr/bin/distrobox-enter -n arch -- sudo ln -s /usr/bin/distrobox-host-exec /usr/bin/xdg-open
+/usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app steam
+/usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app lutris
+/usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app goverlay
+
+echo "50"
+
 echo "# Installing OBS Studio and related utilities"
 /usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio
 /usr/bin/flatpak install --user --noninteractive flathub com.obsproject.Studio.Plugin.Gstreamer
@@ -148,16 +157,6 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "78"
-
-echo "# Installing Mesa-git"
-/usr/bin/flatpak install --user --noninteractive flathub-beta runtime/org.freedesktop.Platform.GL32.mesa-git/x86_64/22.08
-/usr/bin/flatpak install --user --noninteractive flathub-beta runtime/org.freedesktop.Platform.GL.mesa-git/x86_64/22.08
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing mesa-git failed"
-        exit 1
-fi
-echo "80"
 
 echo "# Installing Font Downloader"
 /usr/bin/flatpak install --user --noninteractive flathub org.gustavoperedo.FontDownloader
