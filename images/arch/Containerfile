@@ -14,9 +14,9 @@ RUN git clone https://aur.archlinux.org/yay-bin.git && \
 cd yay-bin && \
 makepkg -si --noconfirm && \
 cd .. && \
-rm yay-bin && \
+rm -drf yay-bin && \
 yay -S aur/mangohud aur/obs-vkcapture aur/protontricks --noconfirm
 USER root
 WORKDIR /
 RUN  userdel -r build && \
-rm /home/build
+rm -drf /home/build
