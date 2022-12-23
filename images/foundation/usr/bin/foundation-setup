@@ -110,7 +110,7 @@ fi
 echo "45"
 
 echo "# Setting up Steam and Lutris"
-/usr/bin/distrobox-create --name arch --image ghcr.io/cyrv6737/arch-preconfig:latest --yes &> /dev/null
+/usr/bin/distrobox-create --name arch --image ghcr.io/cyrv6737/arch-custom:latest --yes &> /dev/null
 /usr/bin/distrobox-enter -n arch -- sudo ln -s /usr/bin/distrobox-host-exec /usr/bin/xdg-open
 /usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app steam
 /usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app lutris
