@@ -54,11 +54,6 @@ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/cyrv6737/fou
 ### TODO
 - [ ] Name
 
-
-## arch-steam-lutris
-
-This image's main purpose is to serve as a preconfigured Arch Linux distrobox used for Steam and Lutris. Unfortunately the Flatpak version of Steam still doesn't quite satisfy all the checkmarks, so distrobox is the solution for now.
-
 ## "Workstation" Image
 
 **Soon**
