@@ -1,0 +1,38 @@
+# FROM ghcr.io/cgwalters/fedora-silverblue:37
+FROM quay.io/fedora-ostree-desktops/kinoite:37
+
+COPY images/kinoite-custom/etc /etc
+COPY images/kinoite-custom/usr /usr
+RUN chmod +x /usr/bin/foundation-setup
+
+# Enable RPM Fusion and install it properly to avoid local override issues
+RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
+rpm-ostree install rpmfusion-nonfree-release rpmfusion-free-release --uninstall=rpmfusion-free-release-$(rpm -E %fedora)-1.noarch --uninstall=rpmfusion-nonfree-release-$(rpm -E %fedora)-1.noarch
+
+# Hardware video decode
+RUN rpm-ostree override remove mesa-va-drivers libavutil-free libswscale-free libswresample-free libavformat-free libavcodec-free --install=ffmpeg-libs --install=ffmpeg --install=libavcodec-freeworld --install=mesa-va-drivers-freeworld --install=mesa-vdpau-drivers-freeworld
+
+# Install and enable System76 Scheduler (kylegospo COPR)
+RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-$(rpm -E %fedora)/kylegospo-system76-scheduler-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
+rpm-ostree install system76-scheduler && \
+systemctl enable com.system76.Scheduler.service
+
+# Remove native firefox. I'm not sure if this is something I want to keep so this will need testing.
+# Also removing toolbox (stinky)
+RUN rpm-ostree override remove firefox firefox-langpacks toolbox
+
+# Override replace testing version of rpm-ostree so systems aren't bricked when layering packages. This will need to be removed relatively soon
+RUN wget https://kojipkgs.fedoraproject.org//packages/rpm-ostree/2022.18/2.fc37/x86_64/rpm-ostree-2022.18-2.fc37.x86_64.rpm && \
+wget https://kojipkgs.fedoraproject.org//packages/rpm-ostree/2022.18/2.fc37/x86_64/rpm-ostree-libs-2022.18-2.fc37.x86_64.rpm && \
+rpm-ostree override replace rpm-ostree-2022.18-2.fc37.x86_64.rpm rpm-ostree-libs-2022.18-2.fc37.x86_64.rpm
+
+# Install extra packages and finalize
+RUN rpm-ostree install \
+distrobox \
+duperemove \
+solaar-udev \
+steam-devices && \
+sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
+systemctl enable rpm-ostreed-automatic.timer && \
+rpm-ostree cleanup -m && \
+ostree container commit

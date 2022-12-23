@@ -4,7 +4,7 @@ RUN sed -i 's/#Color/Color/g' /etc/pacman.conf && \
 printf "[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" | sudo tee -a /etc/pacman.conf && \
 pacman -Syu --noconfirm && \
 pacman -S base-devel git lib32-mesa lib32-vulkan-radeon vulkan-radeon --noconfirm && \
-pacman -S steam lutris --noconfirm
+pacman -S steam lutris solaar --noconfirm
 RUN useradd -m --shell=/bin/bash build && usermod -L build && \
 echo "build ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
 echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
@@ -15,7 +15,7 @@ cd yay-bin && \
 makepkg -si --noconfirm && \
 cd .. && \
 rm -drf yay-bin && \
-yay -S aur/mangohud aur/obs-vkcapture aur/protontricks aur/goverlay-bin aur/libstrangle aur/vkbasalt aur/lib32-vkbasalt --noconfirm
+yay -S aur/protonup-qt-bin aur/mangohud aur/obs-vkcapture aur/protontricks aur/goverlay-bin aur/libstrangle aur/vkbasalt aur/lib32-vkbasalt --noconfirm
 USER root
 WORKDIR /
 RUN  userdel -r build && \

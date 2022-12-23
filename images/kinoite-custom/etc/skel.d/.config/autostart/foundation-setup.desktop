@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Foundation Image Initial Setup
+Comment=Initial setup for ghcr.io/cyrv6737/foundation
+Exec=/usr/bin/foundation-setup
+Icon=org.gnome.Terminal
+Type=Application
+Categories=Utility;System;
+Name[en_US]=startup
