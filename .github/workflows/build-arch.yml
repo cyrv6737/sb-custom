@@ -5,6 +5,7 @@ on:
       - 'images/arch/**'
   schedule:
     - cron: '0 0 * * *'  # Once per day
+  workflow_dispatch
 env:
     IMAGE_NAME: arch-preconfig
     IMAGE_TAGS: latest ${{ github.sha }}
