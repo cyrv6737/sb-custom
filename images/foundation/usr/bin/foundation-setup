@@ -115,6 +115,9 @@ echo "# Setting up Steam and Lutris"
 /usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app steam
 /usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app lutris
 /usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app goverlay
+/usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app solaar
+/usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app protonup-qt
+/usr/bin/distrobox-enter -n arch -- /usr/bin/distrobox-export --app protontricks
 
 echo "50"
 
