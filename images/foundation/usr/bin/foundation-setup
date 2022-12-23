@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if test -e "$HOME"/.config/sb-custom/foundation-done; then
     echo "Already ran"
@@ -190,6 +190,16 @@ echo "# Setting up Default Terminal Toolbox"
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ use-custom-command true
 /usr/bin/gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | cut -d "'" -f 2)/ custom-command "distrobox enter Toolbox"
 echo "93"
+
+echo "# Set Host Terminal Profile"
+profile_name="Host"
+dconfdir=/org/gnome/terminal/legacy/profiles:
+profile_ids_old="$(dconf read "$dconfdir"/list | tr -d "]")"
+profile_id="$(uuidgen)"
+dconf write $dconfdir/list "${profile_ids_old}, '$profile_id']"
+dconf write "$dconfdir/:$profile_id"/visible-name "'$profile_name'"
+
+echo "94"
 
 echo "# Setting up theme"
 /usr/bin/gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
