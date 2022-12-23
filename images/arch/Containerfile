@@ -28,7 +28,7 @@ rm -drf /home/build
 
 # Custom
 RUN git clone https://github.com/DavidoTek/ProtonUp-Qt.git && \
-cp ProtonUp-Qt/share/applications /usr/share/applications && \
+cp -r ProtonUp-Qt/share/applications /usr/share/applications && \
 sed -i 's,Exec=net.davidotek.pupgui2,Exec=/usr/bin/python -m pupgui2 "$@",g' /usr/share/applications/net.davidotek.pupgui2.desktop && \
-cp ProtonUp-Qt/share/icons /usr/share/icons && \
+cp -r ProtonUp-Qt/share/icons /usr/share/icons && \
 rm -drf ProtonUp-QT
