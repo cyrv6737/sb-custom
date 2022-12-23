@@ -4,7 +4,7 @@ FROM docker.io/archlinux:base-devel
 RUN sed -i 's/#Color/Color/g' /etc/pacman.conf && \
 printf "[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" | sudo tee -a /etc/pacman.conf && \
 pacman -Syu --noconfirm && \
-pacman -S wget base-devel git lib32-mesa lib32-vulkan-radeon vulkan-radeon --noconfirm && \
+pacman -S base-devel git lib32-mesa lib32-vulkan-radeon vulkan-radeon --noconfirm && \
 pacman -S steam lutris solaar --noconfirm
 
 # AUR
@@ -27,10 +27,8 @@ RUN  userdel -r build && \
 rm -drf /home/build
 
 # Custom
-RUN wget https://github.com/DavidoTek/ProtonUp-Qt/releases/download/v2.7.6/ProtonUp-Qt-2.7.6-x86_64.AppImage -o puqt.AppImage && \
-chmod +x puqt.AppImage && \
-./puqt.AppImage --appimage-extract > /dev/null && \
-cp squashfs-root/usr/share/icons/* /usr/share/icons && \
-sed -i 's,Exec=net.davidotek.pupgui2,Exec=/usr/bin/python -m pupgui2 "$@",g' squashfs-root/net.davidotek.pupgui2.desktop && \
-cp squashfs-root/net.davidotek.pupgui2.desktop /usr/share/applications && \
-rm -drf squashfs-root
+RUN git clone https://github.com/DavidoTek/ProtonUp-Qt.git && \
+cp ProtonUp-Qt/share/applications /usr/share/applications && \
+sed -i 's,Exec=net.davidotek.pupgui2,Exec=/usr/bin/python -m pupgui2 "$@",g' /usr/share/applications/net.davidotek.pupgui2.desktop && \
+cp ProtonUp-Qt/share/icons /usr/share/icons && \
+rm -drf ProtonUp-QT
