@@ -6,7 +6,7 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Once per day
 env:
-    IMAGE_NAME: arch-steam-lutris
+    IMAGE_NAME: arch-preconfig
     IMAGE_TAGS: latest ${{ github.sha }}
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
     REGISTRY_USER: ${{ github.actor }}
